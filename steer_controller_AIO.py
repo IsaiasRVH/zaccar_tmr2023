@@ -57,7 +57,7 @@ def append_zeros(data, n):
 	return data
 
 def get_points(image):
-	linesP = cv.HoughLinesP(image, rho=1, theta = np.pi/180, threshold = 20, minLineLength = 100, maxLineGap = 400)
+	linesP = cv.HoughLinesP(image, rho=1, theta = np.pi/180, threshold = 20, minLineLength = 110, maxLineGap = 400)
 	points = []
 	if linesP is not None:
 		m_izq = []
