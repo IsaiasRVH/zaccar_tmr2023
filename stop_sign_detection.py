@@ -58,7 +58,7 @@ def callimg(data):
 	any_signal = check_stop_signal(procesed_img)
 
 	pub_speed(any_signal)
-	cv2.imshow("Signal Detection", procesed_img)	
+	#cv2.imshow("Signal Detection", procesed_img)	
 	cv2.waitKey(3)
 
 def main():
