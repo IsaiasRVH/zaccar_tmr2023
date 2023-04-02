@@ -44,7 +44,7 @@ def get_aoi(image):
 def proccess_img(image):
 	gray_img = cv.cvtColor(image, cv.COLOR_RGB2GRAY)
 	masked_image = get_aoi(gray_img)
-	cv.imshow("Masked Image", masked_image)
+	#cv.imshow("Masked Image", masked_image)
 	gaus = cv.blur(masked_image, (5,5))
 	r,bins = cv.threshold(gaus, 115, 255, cv.THRESH_BINARY)
 	crop = bins[-crop_img_height:,:]
@@ -57,7 +57,7 @@ def append_zeros(data, n):
 	return data
 
 def get_points(image):
-	linesP = cv.HoughLinesP(image, rho=1, theta = np.pi/180, threshold = 20, minLineLength = 70, maxLineGap = 400)
+	linesP = cv.HoughLinesP(image, rho=1, theta = np.pi/180, threshold = 20, minLineLength = 100, maxLineGap = 400)
 	points = []
 	if linesP is not None:
 		m_izq = []
@@ -115,7 +115,7 @@ def callimg(data):
 	edges = proccess_img(cv_image)
 	points = get_points(edges)
 	
-	cv.imshow('Crop', edges)
+	#cv.imshow('Crop', edges)
 	steer_angle = calc_steering(points)
 	print("Steer:", steer_angle, "Points:", points)
 	steer_pub.publish(steer_angle)
